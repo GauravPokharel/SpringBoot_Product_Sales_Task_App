@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset ="ISO-8859-1">
+<title> Customer</title>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" 
+integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" 
+crossorigin="anonymous">
+</head>
+<body>
+<nav th:insert="fragments :: menu"/>
+	<div class="container my-2">
+		<h1> Customer list</h1>
+		<hr>
+		
+		<table class="table table-hover table-bordered">
+			<thead>
+				<tr>
+					<th> Full Name </th>
+					<th> Email </th>
+					<th> Is regular </th>
+					<th> Mobile Number </th>
+					<th> Date of birth </th>
+					<th> Address </th >
+					<th> Action </th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="customer :${listCustomer}">
+					<td th:text="${customer.fullName}"></td>
+					<td th:text="${customer.emailAddress}"></td>
+					<td th:text="${customer.isRegular}"></td>
+					<td th:text="${customer.mobileNumber}"></td>
+					<td th:text="${customer.dateOfBirth}"></td>
+					<td th:text="${customer.address}"></td >
+					<td><a th:href="@{/updateCustomer/{id}(id=${customer.id})}" class="btn btn-primary">Update</a> 
+					<a th:href="@{/deleteCustomer/{id}(id=${customer.id})}" class="btn btn-danger">Delete</a></td>
+				</tr>
+			</tbody>
+		</table  >
+		<hr>
+		<a th:href="@{/addCustomer}" type="button" class="btn btn-success"> Add Customer </a>
+		
+	</div >
+</body>
+</html>
